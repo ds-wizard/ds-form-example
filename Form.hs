@@ -7,6 +7,7 @@ import           FormEngine.JQuery as JQ
 
 import           FormEngine.FormItem
 import           FormEngine.FormElement.FormElement as E
+import           FormEngine.FormElement.Identifiers
 import           FormEngine.FormElement.Rendering
 import           FormEngine.FormElement.Tabs
 import           FormEngine.FormContext
@@ -25,9 +26,34 @@ generateForm tabs = do
         makePaneJq :: FormElement -> IO JQuery
         makePaneJq tab =
           select "<div class='main-pane'>"
-          >>= inside
-          >>= foldElements (E.children tab) (makeFormContext tabs) ElemBehaviour{ focusAction = noAction, blurAction = noAction } 
-          >>= JQ.parent
+          >>= makeFormSubPane
+          >>= makeDescSubPane
+          where
+            makeFormSubPane :: JQuery -> IO JQuery
+            makeFormSubPane jq =
+              appendT "<div class='form-subpane'>" jq
+              >>= inside
+              >>= foldElements (E.children tab) formContext ElemBehaviour{ focusAction = noAction, blurAction = noAction } 
+              >>= JQ.parent
+              where
+                formContext = FormContext { 
+                  allElems = tabs
+                , validImg = "<img class='validity-flag' src='img/valid.png'/>"
+                , invalidImg = "<img class='validity-flag' src='img/invalid.png'/>" 
+                }
+            makeDescSubPane :: JQuery -> IO JQuery
+            makeDescSubPane jq =
+              appendT "<div class='desc-subpane'>" jq >>=
+              setAttrInside "id" (descSubpaneId tab) >>=
+              inside 
+--              >>= appendT "<p class='long-desc'>" >>=
+--              setAttrInside "id" (descSubpaneParagraphId tab)
+--              >>= inside
+--              >>= appendT
+--                    "<img src='/elixir-questionnaire/static/img/hint-icon.png' style='margin-right: 5px;'>"
+--              >>= appendT "<span/>"
+--              >>= JQ.parent
+              >>= JQ.parent
     fireClicks :: IO ()
     fireClicks = do
       _ <- select "input:checked" >>= click >>= click
