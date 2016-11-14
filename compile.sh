@@ -1,14 +1,6 @@
 #!/bin/bash
 
-#../../.cabal-sandbox/bin/hastec Main.hs -o main.js \
-hastec Main.hs -o main.js \
-  -Wall \
-  --outdir=../../dist/js \
-  --debug 
-#  -fwarn-unused-imports \
-#  -fwarn-unused-matches 
-#  -fwarn-unused-binds 
+hastec Main.hs -o Page/js/main.js -Wall --debug 
   
-#../../.cabal-sandbox/bin/hastec -fwarn-incomplete-patterns Main.hs -o main.js --outdir=../../dist/js --debug
-rm *.hi *.o FormStructure/*.o FormStructure/*.hi FormStructure/*.jsmod FormElement/*.o FormElement/*.hi FormElement/*.jsmod
-mv main.js ../../elixir-questionnaire/static/js
+#rm *.hi *.o FormStructure/*.o FormStructure/*.hi FormStructure/*.jsmod FormElement/*.o FormElement/*.hi FormElement/*.jsmod
+#mv main.js ../../elixir-questionnaire/static/js
