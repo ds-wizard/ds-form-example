@@ -1,4 +1,3 @@
 # Form Generator Example
 
-## TODO
-- makefile
+Trivial example of form generator based on https://github.com/CCMi-FIT/ds-form-engine. The generated javascript is used in a static example page.
