@@ -31,7 +31,7 @@ ch1DataProduction = Chapter
         , iIdent = Nothing
         , iTags = []
         , iShortDescription = Nothing
-        , iLongDescription = Nothing
+        , iLongDescription = Just "Choice field long description"
         , iLink = Nothing
         , iRules = []
         , iMandatory = True
@@ -63,7 +63,7 @@ ch1DataProduction = Chapter
                           , iIdent = Nothing
                           , iTags = []
                           , iShortDescription = Nothing
-                          , iLongDescription = Nothing
+                          , iLongDescription = Just "Optional field long description"
                           , iLink = Nothing
                           , iRules = []
                           , iMandatory = False
@@ -76,7 +76,7 @@ ch1DataProduction = Chapter
                                         , iIdent = Just "raw-volume-genomics"
                                         , iTags = [Tag "arrow_1_2", Tag "arrow_1_4"]
                                         , iShortDescription = Nothing
-                                        , iLongDescription = Nothing
+                                        , iLongDescription = Just "Number field long description"
                                         , iLink = Nothing
                                         , iRules = volumeSumRules
                                         , iMandatory = True
@@ -90,7 +90,7 @@ ch1DataProduction = Chapter
                                         , iIdent = Just "raw-cost-genomics"
                                         , iTags = []
                                         , iShortDescription = Just "Rough estimation of FTEs + investments + consumables"
-                                        , iLongDescription = Nothing
+                                        , iLongDescription = Just "Number field long description"
                                         , iLink = Nothing
                                         , iRules = [costSumRule]
                                         , iMandatory = False
@@ -119,7 +119,7 @@ ch1DataProduction = Chapter
                                         , iIdent = Just "raw-volume-proteomics"
                                         , iTags = [Tag "arrow_1_2", Tag "arrow_1_4"]
                                         , iShortDescription = Nothing
-                                        , iLongDescription = Nothing
+                                        , iLongDescription = Just "Number field long description"
                                         , iLink = Nothing
                                         , iRules = volumeSumRules
                                         , iMandatory = True
@@ -133,63 +133,7 @@ ch1DataProduction = Chapter
                                         , iIdent = Just "raw-cost-proteomics"
                                         , iTags = []
                                         , iShortDescription = Just "Rough estimation of FTEs + investments + consumables"
-                                        , iLongDescription = Nothing
-                                        , iLink = Nothing
-                                        , iRules = [costSumRule]
-                                        , iMandatory = False
-                                        }
-                                      , nfiUnit = SingleUnit "thousand EUR"
-                                      }
-                                    ]
-                        }
-                      , OptionalGroup
-                        { ogDescriptor = FIDescriptor
-                          { iLabel = Just "Others"
-                          , iNumbering = NoNumbering
-                          , iIdent = Nothing
-                          , iTags = []
-                          , iShortDescription = Nothing
-                          , iLongDescription = Nothing
-                          , iLink = Nothing
-                          , iRules = []
-                          , iMandatory = False
-                          }
-                        , ogLevel = 0
-                        , ogItems = [ StringFI
-                                      { sfiDescriptor = FIDescriptor
-                                        { iLabel = Just "Specify the output type of raw data"
-                                        , iNumbering = NoNumbering
-                                        , iIdent = Nothing
-                                        , iTags = []
-                                        , iShortDescription = Nothing
-                                        , iLongDescription = Just "Images, chips, spectra, ..."
-                                        , iLink = Nothing
-                                        , iRules = []
-                                        , iMandatory = True
-                                        }
-                                      }
-                                    , NumberFI
-                                      { nfiDescriptor = FIDescriptor
-                                        { iLabel = Just "Volume"
-                                        , iNumbering = NoNumbering
-                                        , iIdent = Just "raw-volume-others"
-                                        , iTags = [Tag "arrow_1_2", Tag "arrow_1_4"]
-                                        , iShortDescription = Nothing
-                                        , iLongDescription = Nothing
-                                        , iLink = Nothing
-                                        , iRules = volumeSumRules
-                                        , iMandatory = True
-                                        }
-                                      , nfiUnit = MultipleUnit ["MB", "GB", "TB", "PB"]
-                                      }
-                                    , NumberFI
-                                      { nfiDescriptor = FIDescriptor
-                                        { iLabel = Just "Cost for year 2015"
-                                        , iNumbering = NoNumbering
-                                        , iIdent = Just "raw-cost-others"
-                                        , iTags = []
-                                        , iShortDescription = Just "Rough estimation of FTEs + investments + consumables"
-                                        , iLongDescription = Nothing
+                                        , iLongDescription = Just "Number field long description" 
                                         , iLink = Nothing
                                         , iRules = [costSumRule]
                                         , iMandatory = False
@@ -205,7 +149,7 @@ ch1DataProduction = Chapter
                           , iIdent = Just "raw-volume-sum"
                           , iTags = []
                           , iShortDescription = Nothing
-                          , iLongDescription = Nothing
+                          , iLongDescription = Just "Number field long description"
                           , iLink = Nothing
                           , iRules = [ReadOnlyRule]
                           , iMandatory = False
@@ -219,7 +163,7 @@ ch1DataProduction = Chapter
                           , iIdent = Just "raw-cost-sum"
                           , iTags = []
                           , iShortDescription = Nothing
-                          , iLongDescription = Nothing
+                          , iLongDescription = Just "Optional field long description"
                           , iLink = Nothing
                           , iRules = [ReadOnlyRule]
                           , iMandatory = False
