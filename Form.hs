@@ -3,6 +3,7 @@
 module Form where
 
 import           Prelude
+import           Data.Monoid ((<>))
 import           FormEngine.JQuery as JQ
 
 import           FormEngine.FormItem
@@ -35,14 +36,17 @@ generateForm tabs = do
               appendT "<div class='form-subpane'>" jq
               >>= inside
               >>= foldElements (E.children tab) formContext
-                    ElemBehaviour { focusAction = noAction, blurAction = noAction }
+                    ElemBehaviour { focusAction = noAction, blurAction = noAction, detailsAction = showInfo }
               >>= JQ.parent
               where
                 formContext = FormContext
                   { allElems = tabs
-                  , validImg = "<img class='validity-flag' src='img/valid.png'/>"
-                  , invalidImg = "<img class='validity-flag' src='img/invalid.png'/>"
+                  , validImg = "<img alt='valid' class='validity-flag' src='img/valid.png'/>"
+                  , invalidImg = "<img alt='invalid' class='validity-flag' src='img/invalid.png'/>"
+                  , detailsImg = "<img alt='details' src='img/question.png'/>"
                   }
+                showInfo :: ElemAction
+                showInfo element _ = alertIO $ "some information about " <> show element 
             makeDescSubPane :: JQuery -> IO JQuery
             makeDescSubPane jq =
               appendT "<div class='desc-subpane'>" jq >>=
