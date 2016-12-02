@@ -12,6 +12,7 @@ import           FormEngine.FormElement.Identifiers
 import           FormEngine.FormElement.Rendering
 import           FormEngine.FormElement.Tabs
 import           FormEngine.FormContext
+import           FormEngine.Functionality
 
 generateForm :: [FormElement] -> IO ()
 generateForm tabs = do
@@ -36,14 +37,20 @@ generateForm tabs = do
               appendT "<div class='form-subpane'>" jq
               >>= inside
               >>= foldElements (E.children tab) formContext
-                    ElemBehaviour { focusAction = noAction, blurAction = noAction, detailsAction = showInfo }
+                    ElemBehaviour { 
+                      focusAction = Nothing
+                    , blurAction = Nothing
+                    , detailsFunc = Just Functionality { 
+                        funcImg = "<img alt='details' src='img/question.png'/>"
+                      , funcAction = showInfo 
+                      }
+                    }
               >>= JQ.parent
               where
                 formContext = FormContext
                   { allElems = tabs
                   , validImg = "<img alt='valid' class='validity-flag' src='img/valid.png'/>"
                   , invalidImg = "<img alt='invalid' class='validity-flag' src='img/invalid.png'/>"
-                  , detailsImg = "<img alt='details' src='img/question.png'/>"
                   }
                 showInfo :: ElemAction
                 showInfo element _ = alertIO $ "some information about " <> show element 
