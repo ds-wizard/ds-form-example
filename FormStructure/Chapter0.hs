@@ -150,5 +150,19 @@ ch0GeneralInformation = Chapter
                                              , SimpleOption "research group"
                                              ]
                     }
+                  , InfoFI
+                    { ifiDescriptor = FIDescriptor
+                      { iLabel = Just "Sample informational form item."
+                      , iNumbering = NoNumbering
+                      , iIdent = Nothing
+                      , iTags = []
+                      , iShortDescription = Nothing
+                      , iLongDescription = Nothing
+                      , iLink = Nothing
+                      , iRules = []
+                      , iMandatory = True
+                      }
+                    , ifiText = "This is informational form item. It just displays the given text. Let us write something more, so we see, how this renders."
+                    }
                   ]
       }
