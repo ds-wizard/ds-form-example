@@ -21,7 +21,7 @@ ch0GeneralInformation = Chapter
     , iRules = []
     , iMandatory = False
     }
-  , chItems = [identification, institution, remark]
+  , chItems = [identification, institution, multi, remark]
   }
   where
     identification = SimpleGroup
@@ -163,6 +163,35 @@ ch0GeneralInformation = Chapter
                       , iMandatory = True
                       }
                     , ifiText = "This is informational form item. It just displays the given text. Let us write something more, so we see, how this renders."
+                    }
+                  ]
+      }
+    multi :: FormItem
+    multi = MultipleGroup
+      { mgDescriptor = FIDescriptor
+        { iLabel = Just "Multiple Group"
+        , iShortDescription = Just "Used for variable number of answers"
+        , iNumbering = NoNumbering
+        , iIdent = Nothing
+        , iTags = []
+        , iLongDescription = Nothing
+        , iLink = Nothing
+        , iRules = []
+        , iMandatory = True
+        }
+      , mgLevel = 1
+      , mgItems = [ StringFI
+                    { sfiDescriptor = FIDescriptor
+                      { iLabel = Just "Multiple answers field"
+                      , iNumbering = NoNumbering
+                      , iIdent = Nothing
+                      , iTags = []
+                      , iShortDescription = Nothing
+                      , iLongDescription = Nothing 
+                      , iLink = Nothing
+                      , iRules = []
+                      , iMandatory = True
+                      }
                     }
                   ]
       }

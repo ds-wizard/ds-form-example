@@ -37,12 +37,12 @@ generateForm tabs = do
               appendT "<div class='form-subpane'>" jq
               >>= inside
               >>= foldElements (E.children tab) formContext
-                    ElemBehaviour { 
+                    ElemBehaviour {
                       focusAction = Nothing
                     , blurAction = Nothing
-                    , detailsFunc = Just Functionality { 
+                    , detailsFunc = Just Functionality {
                         funcImg = "<img alt='details' src='img/question.png'/>"
-                      , funcAction = showInfo 
+                      , funcAction = showInfo
                       }
                     }
               >>= JQ.parent
@@ -51,9 +51,11 @@ generateForm tabs = do
                   { allElems = tabs
                   , validImg = "<img alt='valid' class='validity-flag' src='img/valid.png'/>"
                   , invalidImg = "<img alt='invalid' class='validity-flag' src='img/invalid.png'/>"
+                  , addImg = "<img alt='add' class='button-add' src='img/add.png'/>"
+                  , removeImg = "<img alt='remove' class='button-add' src='img/remove.png'/>"
                   }
                 showInfo :: ElemAction
-                showInfo element _ = alertIO $ "some information about " <> show element 
+                showInfo element _ = alertIO $ "some information about " <> show element
             makeDescSubPane :: JQuery -> IO JQuery
             makeDescSubPane jq =
               appendT "<div class='desc-subpane'>" jq >>=
