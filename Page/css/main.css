@@ -87,14 +87,14 @@ body {
     height: 150px;
     background-image: url(elixir-header.png);
     background-repeat: no-repeat;
-    background-position: top right; 
+    background-position: top right;
     margin-bottom: 10px;
 }
 
 .bar {
   padding: 5px 25px;
   margin: 0px 0px 20px 0px;
-  font-style: italic; 
+  font-style: italic;
 }
 
 .message {
@@ -265,7 +265,7 @@ h4 {
 
 td, th {
     display: table-cell;
-    vertical-align: top; 
+    vertical-align: top;
     padding: 4px;
 }
 
@@ -274,7 +274,7 @@ td, th {
 }
 
 .table-text tr {
-  border-bottom: 1px #ccc solid 
+  border-bottom: 1px #ccc solid
 }
 
 .table-text td {
@@ -293,7 +293,7 @@ input, textarea {
   border-radius:3px;
   border-style:ridge;
   background-color: #FFFBFB;
-} 
+}
 
 input[type="text"], input[type="email"], textarea {
   width: 300px;
@@ -369,6 +369,14 @@ label {
   border: 1px solid #aaa;
   border-radius: 5px;
   background-color: #eee;
+  padding: 5px;
+}
+
+.multiple-section {
+  margin-top: 5px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  background-color: #e2ffd7;
   padding: 5px;
 }
 
