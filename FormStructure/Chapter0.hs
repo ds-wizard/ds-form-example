@@ -3,7 +3,7 @@
 module FormStructure.Chapter0 (ch0GeneralInformation) where
 #ifndef __HASTE__
 import           Data.Text (pack)
-#endif 
+#endif
 import           FormEngine.FormItem
 import           FormStructure.Common
 import qualified FormStructure.Countries as Countries
@@ -187,11 +187,56 @@ ch0GeneralInformation = Chapter
                       , iIdent = Nothing
                       , iTags = []
                       , iShortDescription = Nothing
-                      , iLongDescription = Nothing 
+                      , iLongDescription = Nothing
                       , iLink = Nothing
                       , iRules = []
                       , iMandatory = True
                       }
                     }
+                  , ChoiceFI
+                    { chfiDescriptor = FIDescriptor
+                      { iLabel = Just "Choice in MultipleGroup"
+                      , iNumbering = NoNumbering
+                      , iIdent = Nothing
+                      , iTags = []
+                      , iShortDescription = Nothing
+                      , iLongDescription = Nothing
+                      , iLink = Nothing
+                      , iRules = []
+                      , iMandatory = True
+                      }
+                    , chfiAvailableOptions = [ SimpleOption "Option 1"
+                                             , DetailedOption NoNumbering "Option 2" [mgDetails]
+                                             ]
+                    }
                   ]
       }
+      where
+      mgDetails = SimpleGroup
+        { sgDescriptor = FIDescriptor
+          { iLabel = Just "Option details"
+          , iShortDescription = Nothing
+          , iNumbering = NoNumbering
+          , iIdent = Nothing
+          , iTags = []
+          , iLongDescription = Nothing
+          , iLink = Nothing
+          , iRules = []
+          , iMandatory = True
+          }
+        , sgLevel = 1
+        , sgItems = [ StringFI
+                      { sfiDescriptor = FIDescriptor
+                        { iLabel = Just "Some option detail field"
+                        , iNumbering = NoNumbering
+                        , iIdent = Nothing
+                        , iTags = []
+                        , iShortDescription = Nothing
+                        , iLongDescription = Nothing
+                        , iLink = Nothing
+                        , iRules = []
+                        , iMandatory = False
+                        }
+                      }
+                    ]
+        }

@@ -5,7 +5,7 @@ module Main where
 import           Prelude
 import           Data.Maybe (isNothing, catMaybes)
 
-import           FormEngine.JQuery (ready, errorIO)
+import           FormEngine.JQuery (ready, errorIO, dumptIO)
 import           FormStructure.FormStructure as Structure
 import           FormEngine.FormElement.FormElement as Element
 import           Form
@@ -18,6 +18,8 @@ main = ready $ do
     return ()
   else do
     let tabs = catMaybes tabMaybes
+    dumptIO "kuku"
+    mapM_ (dumptIO . show) tabs
     generateForm tabs
 
 
